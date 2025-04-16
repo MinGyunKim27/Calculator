@@ -11,7 +11,7 @@ public class CalculatorLV1 {
         System.out.println("양의 정수를 하나 더 입력하시오");
         int positiveInt2 = sc.nextInt();
 
-        System.out.println("사칙연산 기호를 입력하시오(+,-,*,/");
+        System.out.println("사칙연산 기호를 입력하시오(+,-,*,/)");
         String operation = sc.next();
 
         double result = 0;
