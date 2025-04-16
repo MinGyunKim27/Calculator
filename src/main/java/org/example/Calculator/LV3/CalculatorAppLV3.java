@@ -1,10 +1,10 @@
-package org.example.Calculator.LV2;
+package org.example.Calculator.LV3;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class CalculatorAppLV2 {
+public class CalculatorAppLV3 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Scanner sc1 = new Scanner(System.in);
@@ -14,7 +14,7 @@ public class CalculatorAppLV2 {
         input = "";
 
         ArrayList<String> resultList = new ArrayList<>();
-        Calculator calc = new Calculator();
+        CalculatorV2 calc = new CalculatorV2();
         
         calc.setResult(resultList);
 

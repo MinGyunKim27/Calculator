@@ -1,12 +1,12 @@
-package org.example.Calculator.LV2;
+package org.example.Calculator.LV3;
 
 import java.util.ArrayList;
 
-public class Calculator {
+public class CalculatorV2 {
     private double result;
 
     private ArrayList<String> resultList = new ArrayList<String>();
-    public Calculator(){
+    public CalculatorV2(){
     }
 
     private double add(int num1,int num2){
