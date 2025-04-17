@@ -2,6 +2,7 @@ package org.example.Calculator.LV2;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class CalculatorAppLV2 {
@@ -13,7 +14,7 @@ public class CalculatorAppLV2 {
         String input;
         input = "";
 
-        ArrayList<String> resultList = new ArrayList<>();
+        List<String> resultList = new ArrayList<>();
         Calculator calc = new Calculator();
         
         calc.setResult(resultList);
@@ -53,15 +54,15 @@ public class CalculatorAppLV2 {
             String record = String.format("계산 결과는 : %d %s %d = %.1f 입니다.", positiveInt1, operation, positiveInt2, result);
             calc.saveResult(record);
 
-            System.out.printf("계산 결과는 : %d %s %d = %.1f 입니다.\n\n", positiveInt1, operation, positiveInt2, result);
-            System.out.println("그만하려면 exit을 입력하세요\n계속하려면 exit 이외 어떤 값도 상관 없음.\n");
+            System.out.printf("\n계산 결과는 : %d %s %d = %.1f 입니다.\n\n", positiveInt1, operation, positiveInt2, result);
+            System.out.println("그만하려면 exit을 입력하세요\n계속하려면 exit 이외 아무 값이나 입력하시오.\n");
             input = sc1.nextLine();
 
         }
-        System.out.println("계산기 종료!\n");
+        System.out.println("\n계산기 종료!\n");
 
         System.out.println("계산 결과 값 조회\n");
-        ArrayList<String> resultList1 = calc.getResultList();
+        List<String> resultList1 = calc.getResultList();
 
         int count = 1;
 
@@ -77,7 +78,10 @@ public class CalculatorAppLV2 {
             if (!resultList.isEmpty()) {
                 calc.deleteResult();
 
-                System.out.println("삭제 후 결과\n");
+                System.out.println("\n삭제 후 결과\n");
+                if (resultList.isEmpty()){
+                    System.out.println("저장된 값 없음.");
+                }
 
                 int count2 = 1;
 
@@ -91,8 +95,10 @@ public class CalculatorAppLV2 {
             }
 
         }
+        else {
+            System.out.println("삭제를 하지 않고 계산기를 종료합니다.");
+        }
 
-        System.out.println("삭제를 하지 않고 계산기를 종료합니다.");
 
 
 

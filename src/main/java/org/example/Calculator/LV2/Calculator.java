@@ -1,37 +1,45 @@
 package org.example.Calculator.LV2;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Calculator {
     private double result;
+    private int num1;
+    private int num2;
+    private String operator;
 
-    private ArrayList<String> resultList = new ArrayList<String>();
+    private List<String> resultList = new ArrayList<String>();
     public Calculator(){
     }
 
-    private double add(int num1,int num2){
-        return num1 + num2;
+    private double add(){
+        return this.num1 + this.num2;
     }
 
-    private double subtract(int num1, int num2){
-        return num1 - num2;
+    private double subtract(){
+        return this.num1 - this.num2;
     }
 
-    private double multiply(int num1, int num2){
-        return num1 * num2;
+    private double multiply(){
+        return this.num1 * this.num2;
     }
 
-    private double divide(int num1, int num2){
-        return (double) num1 / (double) num2;
+    private double divide(){
+        return (double) this.num1 / (double) this.num2;
     }
 
     public double calculate(String operator, int num1, int num2){
+        this.operator = operator;
+        this.num1 = num1;
+        this.num2 = num2;
+
         switch (operator) {
-            case "+": result = this.add(num1,num2); break;
-            case "-": result = this.subtract(num1,num2); break;
-            case "*": result = this.multiply(num1,num2); break;
+            case "+": result = this.add(); break;
+            case "-": result = this.subtract(); break;
+            case "*": result = this.multiply(); break;
             case "/": if (num2 != 0) {
-                result = this.divide(num1,num2);
+                result = this.divide();
             }
             else {
                 System.out.println("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
@@ -43,7 +51,7 @@ public class Calculator {
     }
 
 
-    public void setResult(ArrayList<String> resultList) {
+    public void setResult(List<String> resultList) {
         this.resultList = resultList;
     }
 
@@ -51,7 +59,7 @@ public class Calculator {
         resultList.add(result);
     }
 
-    public ArrayList<String> getResultList() {
+    public List<String> getResultList() {
         return resultList;
     }
 
