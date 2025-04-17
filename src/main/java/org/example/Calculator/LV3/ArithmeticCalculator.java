@@ -2,6 +2,7 @@ package org.example.Calculator.LV3;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 
@@ -57,7 +58,7 @@ public class ArithmeticCalculator<T extends Number> {
         this.num2 = num2;
         Operator enumOperator = Operator.fromSymbol(operator);
 
-        switch (enumOperator) {
+        switch (Objects.requireNonNull(enumOperator)) {
             case ADD:
                 result = this.add(); break;
             case SUB:

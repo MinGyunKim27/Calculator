@@ -8,19 +8,25 @@ import java.util.Scanner;
 // 연산자 유효성 검사 클래스
 class OperatorValidator {
 
-    // 허용된 연산자인지 체크
-    public boolean isValid(String op) {
-        return op.equals("+") || op.equals("-") || op.equals("*") || op.equals("/");
+    private final Scanner scanner = new Scanner(System.in);
+
+    // 유효한 연산자가 들어올 때까지 반복 입력 받기
+    public String getValidOperator(String operator) {
+        String op;
+        while (true) {
+            System.out.print(operator);
+            op = scanner.next();
+            if (isValid(op)) {
+                return op;
+            } else {
+                System.out.println("잘못된 연산자입니다. 다시 입력해주세요. (예: +, -, *, /)");
+            }
+        }
     }
 
-    // 유효하지 않으면 기본값 "+" 반환
-    public String getValidOperator(String op) {
-        if (isValid(op)) {
-            return op;
-        } else {
-            System.out.println("잘못된 연산자입니다. 기본값 '+'로 처리합니다.");
-            return "+";
-        }
+    // 내부 유효성 검사
+    private boolean isValid(String op) {
+        return op.equals("+") || op.equals("-") || op.equals("*") || op.equals("/");
     }
 }
 
@@ -29,17 +35,13 @@ class InputHandler {
 
     private final Scanner scanner = new Scanner(System.in);
 
-    // double 타입 양의 숫자 입력 받기
-    public double getPositiveDouble(String message) {
+    // 모든 실수(double) 입력 받기 (음수/0 포함 허용)
+    public double getDouble(String operator) {
         double input;
         while (true) {
-            System.out.print(message);
+            System.out.print(operator);
             try {
                 input = scanner.nextDouble();
-                if (input <= 0) {
-                    System.out.println("0보다 큰 숫자를 입력해주세요.");
-                    continue;
-                }
                 return input;
             } catch (InputMismatchException e) {
                 System.out.println("잘못된 입력입니다. 숫자를 입력해주세요.");
@@ -48,18 +50,17 @@ class InputHandler {
         }
     }
 
-    // 문자열 입력 받기
     public String getString(String message) {
         System.out.print(message);
         return scanner.next();
     }
 
-    // 한 줄 전체 입력 받기 (exit 입력용 등)
     public String getFullLine(String message) {
         System.out.print(message);
         return new Scanner(System.in).nextLine();
     }
 }
+
 
 public class CalculatorAppLV3 {
     public static void main(String[] args) {
@@ -75,8 +76,8 @@ public class CalculatorAppLV3 {
         while (!userInput.equals("exit")) {
             System.out.println("======== 계산기 ========\n");
 
-            double num1 = input.getPositiveDouble("양의 정수를 하나 입력하시오: ");
-            double num2 = input.getPositiveDouble("양의 정수를 하나 더 입력하시오: ");
+            double num1 = input.getDouble("첫 번째 숫자를 입력하시오: ");
+            double num2 = input.getDouble("두 번째 숫자를 입력하시오: ");
 
             String operatorInput = input.getString("사칙연산 기호를 입력하시오(+,-,*,/) : ");
             String validatedOperator = opValidator.getValidOperator(operatorInput);
@@ -123,7 +124,7 @@ public class CalculatorAppLV3 {
         }
 
         // 큰 값 검색
-        double searchTarget = input.getPositiveDouble("\n입력한 값보다 큰 저장 결과를 조회합니다.\n값을 입력하세요: ");
+        double searchTarget = input.getDouble("\n입력한 값보다 큰 저장 결과를 조회합니다.\n값을 입력하세요: ");
         calculator.searchBiggerValue(searchTarget);
     }
 }
