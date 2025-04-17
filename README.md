@@ -46,7 +46,7 @@
 
 1. 저장소 클론:
 ```bash
-git clone https://github.com/your-id/calculator-project.git
+git clone https://github.com/MinGyunKim27/Calculator.git
 ```
 
 2. Java 개발 환경에서 원하는 단계의 클래스 실행
