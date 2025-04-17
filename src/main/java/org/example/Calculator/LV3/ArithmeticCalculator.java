@@ -3,7 +3,6 @@ package org.example.Calculator.LV3;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 
 public class ArithmeticCalculator<T extends Number> {
@@ -20,7 +19,7 @@ public class ArithmeticCalculator<T extends Number> {
             this.symbol = symbol;
         }
 
-        public static Operator fromSymbol(String symbol) {
+        public static Operator validateSymbol(String symbol) {
             for (Operator op : values()) {
                 if (op.symbol.equals(symbol)) {
                     return op;
@@ -56,7 +55,7 @@ public class ArithmeticCalculator<T extends Number> {
     public double calculate(String operator, T num1, T num2) {
         this.num1 = num1;
         this.num2 = num2;
-        Operator enumOperator = Operator.fromSymbol(operator);
+        Operator enumOperator = Operator.validateSymbol(operator);
 
         switch (Objects.requireNonNull(enumOperator)) {
             case ADD:
