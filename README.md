@@ -59,18 +59,30 @@ git clone https://github.com/MinGyunKim27/Calculator.git
 ## 📁 디렉터리 구조
 
 ```
-calculator-project/
-├── lv1/
-│   └── CalculatorLv1.java
-├── lv2/
-│   └── CalculatorLv2.java
-├── lv3/
-│   ├── CalculatorAppLV3.java
-│   ├── ArithmeticCalculator.java
-│   ├── InputHandler.java
-│   └── OperatorValidator.java
-└── README.md
+Calculator/
+├── src/
+│   └── main/
+│       └── java/
+│           └── org/
+│               └── example/
+│                   └── Calculator/
+│                       ├── LV1/
+│                       │   └── CalculatorAppLV1.java
+│                       ├── LV2/
+│                       │   └── CalculatorAppLV2.java
+│                       │   └── Calculator.java
+│                       ├── LV3/
+│                       │   ├── CalculatorAppLV3.java
+│                       │   └── ArithmeticCalculator.java
+│                       └── Main.java
+├── .gitignore
+├── README.md
+├── build.gradle.kts
+├── gradlew
+├── gradlew.bat
+└── settings.gradle.kts
 ```
+
 
 ---
 
