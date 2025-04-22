@@ -11,6 +11,8 @@ public class CalculatorAppLV1 {
         String input;
         input = "";
 
+
+
         // 사용자로부터 "exit"이 입력되기 전까지 계속 반복
         while (!input.equals("exit")) {
             System.out.println("========계산기========");

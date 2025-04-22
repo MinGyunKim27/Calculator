@@ -68,7 +68,8 @@ public class ArithmeticCalculator<T extends Number> {
                 if (num2.doubleValue() != 0.0) {
                     result = this.divide();
                 } else {
-                    System.out.println("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
+                    throw new ArithmeticException("나눗셈에서 0으로 나눌 수 없습니다.");
+
                 }
                 break;
             default:
@@ -96,20 +97,31 @@ public class ArithmeticCalculator<T extends Number> {
         }
     }
 
-    public void searchBiggerValue(double num){
+    public void searchBiggerValue(double num) {
+        if (resultList.isEmpty()) {
+            System.out.println("저장된 결과가 없습니다.");
+            return;
+        }
+
+        List<Double> filtered = resultList.stream()
+                .filter(a -> a > num)
+                .toList();
+
+        if (filtered.isEmpty()) {
+            System.out.println("입력한 값보다 큰 결과는 없습니다.");
+            return;
+        }
+
         System.out.print("입력한 값보다 큰 값들은 : ");
         int count = 1;
-        for (double a : this.resultList.stream().filter(a -> a > num).toList()){
-            if (count != 1){
-                System.out.print(", "+a);
-            }
-            else {
+        for (double a : filtered) {
+            if (count != 1) {
+                System.out.print(", " + a);
+            } else {
                 System.out.print(a);
             }
-            count ++;
+            count++;
         }
         System.out.println("입니다");
-
-
     }
 }

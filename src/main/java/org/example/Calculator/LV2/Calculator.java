@@ -9,8 +9,9 @@ public class Calculator {
     private int num2;
     private String operator;
 
-    private List<String> resultList = new ArrayList<String>();
+    private List<String> resultList;
     public Calculator(){
+        this.resultList = new ArrayList<String>();
     }
 
     private double add(){
@@ -42,7 +43,8 @@ public class Calculator {
                 result = this.divide();
             }
             else {
-                System.out.println("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
+                throw new ArithmeticException("나눗셈에서 0으로 나눌 수 없습니다.");
+
             }
                 break;
         }

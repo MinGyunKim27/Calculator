@@ -8,16 +8,11 @@ import java.util.Scanner;
 // 연산자 유효성 검사 클래스
 class OperatorValidator {
 
-    private final Scanner scanner = new Scanner(System.in);
-
     // 유효한 연산자가 들어올 때까지 반복 입력 받기
     public String getValidOperator(String operator) {
-        String op;
         while (true) {
-            System.out.print(operator);
-            op = scanner.next();
-            if (isValid(op)) {
-                return op;
+            if (isValid(operator)) {
+                return operator;
             } else {
                 System.out.println("잘못된 연산자입니다. 다시 입력해주세요. (예: +, -, *, /)");
             }
@@ -29,7 +24,6 @@ class OperatorValidator {
         return op.equals("+") || op.equals("-") || op.equals("*") || op.equals("/");
     }
 }
-
 
 class InputHandler {
 
@@ -82,7 +76,14 @@ public class CalculatorAppLV3 {
             String operatorInput = input.getString("사칙연산 기호를 입력하시오(+,-,*,/) : ");
             String validatedOperator = opValidator.getValidOperator(operatorInput);
 
-            double result = calculator.calculate(validatedOperator, num1, num2);
+            double result = 0.0;
+            try {
+                result = calculator.calculate(validatedOperator, num1, num2);
+            }
+            catch (ArithmeticException e){
+                System.out.println(e.getMessage()+"\n다시 입력하세요!!\n");
+                continue;
+            }
             calculator.saveResult(result);
 
             System.out.printf("계산 결과는: %.1f %s %.1f = %.1f 입니다.\n\n", num1, validatedOperator, num2, result);

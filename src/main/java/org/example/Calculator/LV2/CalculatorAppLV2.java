@@ -50,7 +50,13 @@ public class CalculatorAppLV2 {
             String operation = sc.next();
 
             double result = 0.0;
-            result = calc.calculate(operation,positiveInt1,positiveInt2);
+            try {
+                result = calc.calculate(operation, positiveInt1, positiveInt2);
+            }
+            catch (ArithmeticException e){
+                System.out.println(e.getMessage()+"\n다시 입력하세요!!\n");
+                continue;
+            }
             String record = String.format("계산 결과는 : %d %s %d = %.1f 입니다.", positiveInt1, operation, positiveInt2, result);
             calc.saveResult(record);
 
