@@ -1,62 +1,10 @@
 package org.example.Calculator.LV3;
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.List;
-import java.util.Scanner;
-
-// 연산자 유효성 검사 클래스
-class OperatorValidator {
-
-    // 유효한 연산자가 들어올 때까지 반복하여 입력받는 메서드
-    public String getValidOperator(String operator) {
-        while (true) {
-            if (isValid(operator)) {
-                return operator;
-            } else {
-                System.out.println("잘못된 연산자입니다. 다시 입력해주세요. (예: +, -, *, /)");
-            }
-        }
-    }
-
-    // 연산자가 +, -, *, / 중 하나인지 확인
-    private boolean isValid(String op) {
-        return op.equals("+") || op.equals("-") || op.equals("*") || op.equals("/");
-    }
-}
 
 // 사용자 입력 처리 클래스
-class InputHandler {
 
-    private final Scanner scanner = new Scanner(System.in);
-
-    // 실수(double)를 입력받는 메서드 (입력 오류 처리 포함)
-    public double getDouble(String message) {
-        double input;
-        while (true) {
-            System.out.print(message);
-            try {
-                input = scanner.nextDouble();
-                return input;
-            } catch (InputMismatchException e) {
-                System.out.println("잘못된 입력입니다. 숫자를 입력해주세요.");
-                scanner.nextLine(); // 입력 버퍼 정리
-            }
-        }
-    }
-
-    // 단어(String) 입력받기
-    public String getString(String message) {
-        System.out.print(message);
-        return scanner.next();
-    }
-
-    // 한 줄 전체 입력받기
-    public String getFullLine(String message) {
-        System.out.print(message);
-        return new Scanner(System.in).nextLine();
-    }
-}
 
 // 계산기 실행 메인 클래스
 public class CalculatorAppLV3 {
